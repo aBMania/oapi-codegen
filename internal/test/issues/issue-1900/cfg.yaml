@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../../../configuration-schema.json
+package: issue1900
+output: ping.gen.go
+generate:
+  models: true
+  client: true

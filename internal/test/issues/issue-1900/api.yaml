@@ -1,0 +1,68 @@
+openapi: 3.0.2
+info:
+  version: 1.0.0
+  title: Issue 1900
+paths:
+  /ping:
+    get:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/Pong1'
+                  - $ref: '#/components/schemas/Pong2'
+                  - $ref: '#/components/schemas/Pong3'
+          description: Ping object
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Ping not found
+components:
+  schemas:
+    Pong1:
+      properties:
+        pong1_prop1:
+          type: string
+        pong1_prop2:
+          type: string
+      required:
+        - pong1_prop1
+        - pong1_prop2
+      type: object
+    Pong2:
+      properties:
+        pong2_prop1:
+          type: string
+        pong2_prop2:
+          type: string
+      required:
+        - pong2_prop1
+        - pong2_prop2
+      type: object
+    Pong3:
+      properties:
+        pong3_prop1:
+          type: string
+        pong3_prop2:
+          type: string
+      required:
+        - pong3_prop1
+        - pong3_prop2
+      type: object
+    Error:
+      properties:
+        message:
+          type: string
+        name:
+          type: string
+        status_code:
+          type: integer
+      required:
+        - message
+        - name
+        - status_code
+      type: object
